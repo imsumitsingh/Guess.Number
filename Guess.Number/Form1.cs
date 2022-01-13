@@ -13,6 +13,7 @@ namespace Guess.Number
 {
     public partial class Form1 : Form
     {
+        private TimeSpan time;
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace Guess.Number
             textBox1.Focus();
             textBox2.Text = "0";
             textBox3.Text = Utility.GetRandomNumber(4).ToString();
+            label2.Text = new TimeSpan(0, 20, 0).ToString();
 
         }
 
@@ -36,11 +38,13 @@ namespace Guess.Number
             }
             if (textBox3.Text==textBox1.Text)
             {
+               
+               
+                MessageBox.Show("Your guess is right\nNumber was " + textBox3.Text+"\nYou guesed in "+textBox2.Text+" Attempts.","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                textBox3.Text = Utility.GetRandomNumber(4).ToString();
                 dataGridView1.Rows.Clear();
                 textBox1.Text = "";
                 textBox2.Text = "";
-                textBox3.Text = Utility.GetRandomNumber(4).ToString();
-                MessageBox.Show("Your guess is right\nNumber was " + textBox3.Text+"\nYou guesed in "+textBox2.Text+"Attempts","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
             string myNo = textBox1.Text;
@@ -92,6 +96,14 @@ namespace Guess.Number
             {
                 button1.PerformClick();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = new TimeSpan(Convert.ToInt32(label2.Text.Split(':')[0]), Convert.ToInt32(label2.Text.Split(':')[1]), Convert.ToInt32(label2.Text.Split(':')[2]));
+            //label2.Text = time.Add(new TimeSpan(0, 0, 1)).ToString();
+            label2.Text = time.Subtract(new TimeSpan(0, 0, 1)).ToString();
+
         }
     }
 }
