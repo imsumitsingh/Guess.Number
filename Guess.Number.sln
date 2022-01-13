@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guess.Number", "Guess.Number\Guess.Number.csproj", "{9369C264-37F0-448E-A2D6-BA03B9AFC822}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GuessNumber", "GuessNumber\GuessNumber.vdproj", "{E92A66D1-07FD-48B1-8348-1EA16EDE647D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9369C264-37F0-448E-A2D6-BA03B9AFC822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9369C264-37F0-448E-A2D6-BA03B9AFC822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9369C264-37F0-448E-A2D6-BA03B9AFC822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9369C264-37F0-448E-A2D6-BA03B9AFC822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92A66D1-07FD-48B1-8348-1EA16EDE647D}.Debug|Any CPU.ActiveCfg = Debug
+		{E92A66D1-07FD-48B1-8348-1EA16EDE647D}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EA363A2-5CBD-4855-9D05-CFAC1B1F3E2A}
+	EndGlobalSection
+EndGlobal
