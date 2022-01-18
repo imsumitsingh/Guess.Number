@@ -61,12 +61,30 @@ namespace Guess.Number.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        internal static string high_scoe {
+            get {
+                return ResourceManager.GetString("high_scoe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon numbers {
             get {
                 object obj = ResourceManager.GetObject("numbers", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        internal static string txt1 {
+            get {
+                return ResourceManager.GetString("txt1", resourceCulture);
             }
         }
     }

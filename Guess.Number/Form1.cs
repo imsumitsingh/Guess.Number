@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSharp;
+using Guess.Number;
 
 namespace Guess.Number
 {
@@ -19,34 +21,25 @@ namespace Guess.Number
             InitializeComponent();
 
         }
-
+       
         private void Form1_Load(object sender, EventArgs e)
         {
             
             textBox1.Focus();
             textBox2.Text = "0";
             textBox3.Text = Utility.GetRandomNumber(4).ToString();
-            label2.Text = new TimeSpan(0, 20, 0).ToString();
+            label2.Text = new TimeSpan(0, 0, 0).ToString();
+          
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text=="")
+            if (textBox1.Text=="" || textBox1.Text.Length !=4)
             {
                 return;
             }
-            if (textBox3.Text==textBox1.Text)
-            {
-               
-               
-                MessageBox.Show("Your guess is right\nNumber was " + textBox3.Text+"\nYou guesed in "+textBox2.Text+" Attempts.","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                textBox3.Text = Utility.GetRandomNumber(4).ToString();
-                dataGridView1.Rows.Clear();
-                textBox1.Text = "";
-                textBox2.Text = "";
-                return;
-            }
+           
             string myNo = textBox1.Text;
             string guessNo = textBox3.Text;
             int match = 0, postion = 0;int attemt = Convert.ToInt32(textBox2.Text)+1;
@@ -59,7 +52,7 @@ namespace Guess.Number
                     if (Mynew[j]==guessNo[i])
                     {
                         match++;
-                       Mynew= Mynew.Remove(j, 1);
+                        Mynew= Mynew.Remove(j, 1);
                         break;
                     } 
                 }
@@ -70,9 +63,31 @@ namespace Guess.Number
             }
             dataGridView1.Rows.Add(attemt,myNo, match, postion);
             textBox2.Text = attemt.ToString();
+            
+            if (textBox3.Text == textBox1.Text)
+            {
+
+                timer1.Stop();
+                DialogResult dr = MessageBox.Show("Your guess is right\nNumber was " + textBox3.Text + "\nYou guesed in " + (Convert.ToInt32(textBox2.Text)).ToString() + " Attempts\nTime Taken :" + label2.Text + "\nDo You Want To Play Again ?", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dr == DialogResult.OK)
+                {
+                    textBox3.Text = Utility.GetRandomNumber(4).ToString();
+                    label2.Text = new TimeSpan(0, 0, 0).ToString();
+                    timer1.Start();
+                    dataGridView1.Rows.Clear();
+                    textBox1.Text = "";
+                    textBox2.Text = "0";
+                    textBox1.Focus();
+                    return;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+                
+            }
             textBox1.Text = "";
             textBox1.Focus();
-
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -102,7 +117,8 @@ namespace Guess.Number
         {
             time = new TimeSpan(Convert.ToInt32(label2.Text.Split(':')[0]), Convert.ToInt32(label2.Text.Split(':')[1]), Convert.ToInt32(label2.Text.Split(':')[2]));
             //label2.Text = time.Add(new TimeSpan(0, 0, 1)).ToString();
-            label2.Text = time.Subtract(new TimeSpan(0, 0, 1)).ToString();
+            label2.Text = time.Add(new TimeSpan(0, 0, 1)).ToString();
+            
 
         }
     }
