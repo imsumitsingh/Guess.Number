@@ -29,7 +29,9 @@ namespace Guess.Number
             textBox2.Text = "0";
             textBox3.Text = Utility.GetRandomNumber(4).ToString();
             label2.Text = new TimeSpan(0, 0, 0).ToString();
-          
+            Properties.Settings.Default["hs"] = "1";
+            Properties.Settings.Default.Save();
+            textBox1.Text = (string)Properties.Settings.Default["HS"];
 
         }
 
@@ -66,7 +68,7 @@ namespace Guess.Number
             
             if (textBox3.Text == textBox1.Text)
             {
-
+                
                 timer1.Stop();
                 DialogResult dr = MessageBox.Show("Your guess is right\nNumber was " + textBox3.Text + "\nYou guesed in " + (Convert.ToInt32(textBox2.Text)).ToString() + " Attempts\nTime Taken :" + label2.Text + "\nDo You Want To Play Again ?", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dr == DialogResult.OK)
